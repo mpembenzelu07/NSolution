@@ -1,0 +1,1082 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechSphere Solutions | Corporate IT & Network Security</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Global Styles */
+        :root {
+            --primary: #0a2e6d;
+            --secondary: #1a73e8;
+            --accent: #00c9a7;
+            --dark: #0c1a35;
+            --light: #f5f9ff;
+            --gray: #eef2f7;
+            --text: #333;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--text);
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        h1, h2, h3, h4 {
+            color: var(--dark);
+            margin-bottom: 1rem;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            line-height: 1.2;
+        }
+        
+        h2 {
+            font-size: 2rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background-color: var(--accent);
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary);
+            color: white;
+            padding: 12px 28px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        
+        .btn:hover {
+            background-color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .btn-accent {
+            background-color: var(--accent);
+        }
+        
+        .btn-accent:hover {
+            background-color: #00b894;
+        }
+        
+        .section {
+            padding: 80px 0;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-header h2 {
+            display: inline-block;
+        }
+        
+        .card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+            height: 100%;
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+        }
+        
+        /* Header & Navigation */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo h1 {
+            font-size: 1.8rem;
+            margin-bottom: 0;
+            color: var(--primary);
+        }
+        
+        .logo span {
+            color: var(--accent);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 30px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+        
+        nav ul li a:hover {
+            color: var(--secondary);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--primary);
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(10, 46, 109, 0.85), rgba(10, 46, 109, 0.9)), url('https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 120px 0;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            color: white;
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+        
+        .hero-btns {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 40px;
+        }
+        
+        /* Features Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 20px;
+        }
+        
+        /* 3D Network Viewer */
+        .network-viewer {
+            background-color: var(--gray);
+            border-radius: 12px;
+            overflow: hidden;
+            margin: 40px 0;
+            position: relative;
+        }
+        
+        .viewer-container {
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #0a2e6d 0%, #1a73e8 100%);
+            position: relative;
+        }
+        
+        .viewer-controls {
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+            background-color: white;
+        }
+        
+        .control-btn {
+            background-color: var(--gray);
+            border: none;
+            padding: 10px 20px;
+            margin: 0 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .control-btn:hover {
+            background-color: var(--secondary);
+            color: white;
+        }
+        
+        /* AI Tools */
+        .ai-tools {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .tool-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-top: 4px solid var(--accent);
+        }
+        
+        .tool-card h3 {
+            display: flex;
+            align-items: center;
+        }
+        
+        .tool-card i {
+            margin-right: 10px;
+            color: var(--secondary);
+        }
+        
+        /* Cost Estimator */
+        .estimator {
+            background-color: white;
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-top: 30px;
+        }
+        
+        .estimator-form {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        
+        .estimator-result {
+            background-color: var(--gray);
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+            margin-top: 30px;
+        }
+        
+        .price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--secondary);
+            margin: 10px 0;
+        }
+        
+        /* Demo Section */
+        .demo-section {
+            background-color: var(--dark);
+            color: white;
+        }
+        
+        .demo-section h2 {
+            color: white;
+        }
+        
+        .demo-section h2:after {
+            background-color: var(--accent);
+        }
+        
+        .demo-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .demo-card {
+            background-color: rgba(255,255,255,0.1);
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-logo h2 {
+            color: white;
+        }
+        
+        .footer-links h3 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links ul li a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links ul li a:hover {
+            color: var(--accent);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.7);
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            h2 {
+                font-size: 1.8rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            nav ul {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .mobile-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+                z-index: 1000;
+            }
+            
+            .mobile-menu.active {
+                display: block;
+            }
+            
+            .mobile-menu ul {
+                list-style: none;
+            }
+            
+            .mobile-menu ul li {
+                border-bottom: 1px solid var(--gray);
+            }
+            
+            .mobile-menu ul li a {
+                display: block;
+                padding: 15px 20px;
+                text-decoration: none;
+                color: var(--dark);
+                font-weight: 600;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero {
+                padding: 80px 0;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero-btns {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .section {
+                padding: 60px 0;
+            }
+            
+            .estimator {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <h1>TechSphere<span>Solutions</span></h1>
+            </div>
+            <nav class="desktop-nav">
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#solutions">Solutions</a></li>
+                    <li><a href="#tools">Smart Tools</a></li>
+                    <li><a href="#demo">Enterprise Tech</a></li>
+                    <li><a href="#case-study">Case Study</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        <div class="mobile-menu" id="mobileMenu">
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#solutions">Solutions</a></li>
+                <li><a href="#tools">Smart Tools</a></li>
+                <li><a href="#demo">Enterprise Tech</a></li>
+                <li><a href="#case-study">Case Study</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>Smart Corporate IT & Network Security Solutions</h1>
+            <p>Complete network infrastructure, cybersecurity, and smart office systems for businesses in Tanzania. From structured cabling to AI-powered security solutions.</p>
+            <div class="hero-btns">
+                <a href="#estimator" class="btn">Get Cost Estimate</a>
+                <a href="#solutions" class="btn btn-accent">View Solutions</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solutions Section -->
+    <section class="section" id="solutions">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Core Solutions</h2>
+                <p>Comprehensive IT infrastructure and security services tailored for your business</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="card">
+                    <div class="feature-icon">
+                        <i class="fas fa-network-wired"></i>
+                    </div>
+                    <h3>Network Infrastructure</h3>
+                    <p>Structured cabling, Wi-Fi deployment, and network configuration for seamless connectivity across your entire office.</p>
+                    <ul>
+                        <li>Cat6/Cat6a Ethernet cabling</li>
+                        <li>Enterprise-grade Wi-Fi 6 access points</li>
+                        <li>Network segmentation & VLANs</li>
+                        <li>Redundant fiber connections</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Cybersecurity</h3>
+                    <p>Protect your business data and network with enterprise-grade security solutions and best practices.</p>
+                    <ul>
+                        <li>Firewall configuration & management</li>
+                        <li>Endpoint protection</li>
+                        <li>Security audits & penetration testing</li>
+                        <li>Employee security training</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <div class="feature-icon">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <h3>CCTV & Access Control</h3>
+                    <p>State-of-the-art surveillance and access management systems to secure your physical premises.</p>
+                    <ul>
+                        <li>4K IP cameras with remote viewing</li>
+                        <li>Access control with biometrics</li>
+                        <li>24/7 monitoring solutions</li>
+                        <li>Integration with alarm systems</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <div class="feature-icon">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <h3>Smart Office Systems</h3>
+                    <p>Transform your workspace with intelligent automation and IoT solutions for modern businesses.</p>
+                    <ul>
+                        <li>Conference room automation</li>
+                        <li>Digital signage & wayfinding</li>
+                        <li>Energy management systems</li>
+                        <li>Unified communications</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3D Network Visualization -->
+    <section class="section" id="network-viz">
+        <div class="container">
+            <div class="section-header">
+                <h2>3D Network Visualization</h2>
+                <p>Interactive visualization of your proposed network infrastructure. Rotate and explore the layout.</p>
+            </div>
+            
+            <div class="network-viewer">
+                <div class="viewer-container">
+                    <div id="network-model">
+                        <!-- This would be a 3D model in a real implementation -->
+                        <div style="color: white; text-align: center;">
+                            <i class="fas fa-network-wired" style="font-size: 5rem; margin-bottom: 20px;"></i>
+                            <h3 style="color: white;">Interactive 3D Network Model</h3>
+                            <p>Rotate, zoom and explore network components in this simulation</p>
+                            <p style="margin-top: 30px; font-size: 0.9rem; opacity: 0.8;">(Gyroscope-controlled on mobile devices)</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="viewer-controls">
+                    <button class="control-btn" id="rotateBtn"><i class="fas fa-rotate"></i> Rotate View</button>
+                    <button class="control-btn" id="zoomInBtn"><i class="fas fa-search-plus"></i> Zoom In</button>
+                    <button class="control-btn" id="zoomOutBtn"><i class="fas fa-search-minus"></i> Zoom Out</button>
+                    <button class="control-btn" id="resetBtn"><i class="fas fa-undo"></i> Reset View</button>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 30px;">
+                <p><strong>View on mobile:</strong> Tilt your device to explore the network layout from different angles.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Smart Tools Section -->
+    <section class="section" id="tools">
+        <div class="container">
+            <div class="section-header">
+                <h2>Smart Tools & AI Solutions</h2>
+                <p>Powerful tools to plan, estimate, and manage your IT infrastructure projects</p>
+            </div>
+            
+            <!-- Cost Estimator -->
+            <div class="estimator" id="estimator">
+                <h2><i class="fas fa-calculator"></i> Network Deployment Cost Estimator</h2>
+                <p>Get an instant AI-powered estimate for your corporate network setup</p>
+                
+                <div class="estimator-form">
+                    <div class="form-group">
+                        <label for="employees">Number of Employees</label>
+                        <input type="range" id="employees" min="10" max="200" value="50" class="form-control">
+                        <div id="employeesValue">50</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="officeSize">Office Size (sq. ft.)</label>
+                        <select id="officeSize" class="form-control">
+                            <option value="small">Under 2,000</option>
+                            <option value="medium" selected>2,000 - 5,000</option>
+                            <option value="large">5,000 - 10,000</option>
+                            <option value="xlarge">Over 10,000</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="cctv">CCTV Cameras Needed</label>
+                        <input type="range" id="cctv" min="5" max="50" value="12" class="form-control">
+                        <div id="cctvValue">12</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="accessPoints">Wi-Fi Access Points</label>
+                        <input type="range" id="accessPoints" min="3" max="30" value="8" class="form-control">
+                        <div id="accessPointsValue">8</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="accessControl">Access Control Doors</label>
+                        <input type="range" id="accessControl" min="2" max="20" value="5" class="form-control">
+                        <div id="accessControlValue">5</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="securityLevel">Security Level</label>
+                        <select id="securityLevel" class="form-control">
+                            <option value="basic">Basic</option>
+                            <option value="standard" selected>Standard</option>
+                            <option value="enterprise">Enterprise</option>
+                            <option value="government">Government Grade</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <button class="btn btn-accent" id="calculateBtn">Calculate Estimate</button>
+                
+                <div class="estimator-result" id="estimateResult" style="display: none;">
+                    <h3>Estimated Project Cost</h3>
+                    <div class="price" id="estimatedPrice">$24,500 - $32,800</div>
+                    <p>This estimate includes equipment, installation, and configuration for a 50-employee office.</p>
+                    <p><strong>Timeline:</strong> 3-4 weeks for complete deployment</p>
+                    <a href="#contact" class="btn" style="margin-top: 20px;">Get Detailed Proposal</a>
+                </div>
+            </div>
+            
+            <!-- Other AI Tools -->
+            <div style="margin-top: 60px;">
+                <h2 style="text-align: center; margin-bottom: 40px;">Additional Smart Tools</h2>
+                <div class="ai-tools">
+                    <div class="tool-card">
+                        <h3><i class="fas fa-robot"></i> AI Documentation Wizard</h3>
+                        <p>Auto-generates network proposals, security audit reports, cabling layout summaries, and maintenance contracts.</p>
+                        <button class="btn" style="margin-top: 15px;">Try Demo</button>
+                    </div>
+                    
+                    <div class="tool-card">
+                        <h3><i class="fas fa-clipboard-check"></i> Compliance Checker</h3>
+                        <p>Checks compliance with ISO/IEC standards, cybersecurity best practices, and data protection readiness.</p>
+                        <button class="btn" style="margin-top: 15px;">Check Compliance</button>
+                    </div>
+                    
+                    <div class="tool-card">
+                        <h3><i class="fas fa-microphone"></i> Smart Forms with Voice Input</h3>
+                        <p>"We need CCTV for 3 floors..." - Speak naturally and our AI fills the requirement form for you.</p>
+                        <button class="btn" style="margin-top: 15px;">Try Voice Input</button>
+                    </div>
+                    
+                    <div class="tool-card">
+                        <h3><i class="fas fa-language"></i> Real-Time Translation Chat</h3>
+                        <p>Communicate with our team in any language. Perfect for foreign investors and international companies.</p>
+                        <button class="btn" style="margin-top: 15px;">Start Chat</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Live Project Timeline -->
+    <section class="section" id="case-study">
+        <div class="container">
+            <div class="section-header">
+                <h2>Live Project Timeline: 50-Employee Office in Dar es Salaam</h2>
+                <p>Transparent project tracking from survey to handover</p>
+            </div>
+            
+            <div class="card">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
+                    <h3 style="margin-bottom: 0;">Project Progress: 85% Complete</h3>
+                    <div style="background-color: var(--accent); color: white; padding: 5px 15px; border-radius: 20px;">On Track</div>
+                </div>
+                
+                <div style="background-color: var(--gray); height: 10px; border-radius: 5px; margin-bottom: 40px; overflow: hidden;">
+                    <div style="background-color: var(--accent); height: 100%; width: 85%;"></div>
+                </div>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
+                    <div style="text-align: center; padding: 20px; background-color: #e8f4ff; border-radius: 8px;">
+                        <div style="font-size: 2rem; color: var(--secondary); margin-bottom: 10px;">1</div>
+                        <h4>Survey & Planning</h4>
+                        <p>Completed: March 15</p>
+                        <div style="color: var(--accent);"><i class="fas fa-check-circle"></i> Done</div>
+                    </div>
+                    
+                    <div style="text-align: center; padding: 20px; background-color: #e8f4ff; border-radius: 8px;">
+                        <div style="font-size: 2rem; color: var(--secondary); margin-bottom: 10px;">2</div>
+                        <h4>Cabling Installation</h4>
+                        <p>Completed: April 5</p>
+                        <div style="color: var(--accent);"><i class="fas fa-check-circle"></i> Done</div>
+                    </div>
+                    
+                    <div style="text-align: center; padding: 20px; background-color: #e8f4ff; border-radius: 8px;">
+                        <div style="font-size: 2rem; color: var(--secondary); margin-bottom: 10px;">3</div>
+                        <h4>Equipment Configuration</h4>
+                        <p>In Progress: 90%</p>
+                        <div style="color: var(--secondary);"><i class="fas fa-spinner fa-spin"></i> Ongoing</div>
+                    </div>
+                    
+                    <div style="text-align: center; padding: 20px; background-color: #f0f0f0; border-radius: 8px;">
+                        <div style="font-size: 2rem; color: #aaa; margin-bottom: 10px;">4</div>
+                        <h4>Testing & Handover</h4>
+                        <p>Scheduled: May 10</p>
+                        <div style="color: #aaa;"><i class="far fa-calendar"></i> Upcoming</div>
+                    </div>
+                </div>
+                
+                <div style="margin-top: 40px;">
+                    <h4>Project Details:</h4>
+                    <ul style="columns: 2; margin-top: 15px;">
+                        <li>Structured cabling for 50 workstations</li>
+                        <li>12 Wi-Fi 6 access points</li>
+                        <li>16-channel CCTV system with 12 cameras</li>
+                        <li>Access control for 5 entry points</li>
+                        <li>Firewall and network security setup</li>
+                        <li>Uninterruptible power supply (UPS)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Demo/Enterprise Section -->
+    <section class="section demo-section" id="demo">
+        <div class="container">
+            <div class="section-header">
+                <h2>Enterprise Technology Demonstrations</h2>
+                <p>Explore our advanced enterprise solutions (simulated for demonstration)</p>
+            </div>
+            
+            <div class="demo-cards">
+                <div class="demo-card">
+                    <i class="fas fa-link" style="font-size: 2.5rem; margin-bottom: 20px;"></i>
+                    <h3>Blockchain Certificate Explorer</h3>
+                    <p>Verify network security certificates with blockchain technology.</p>
+                    <button class="btn" style="margin-top: 15px;">View Demo</button>
+                </div>
+                
+                <div class="demo-card">
+                    <i class="fas fa-leaf" style="font-size: 2.5rem; margin-bottom: 20px;"></i>
+                    <h3>Carbon Footprint Calculator</h3>
+                    <p>Measure and optimize your IT infrastructure's environmental impact.</p>
+                    <button class="btn" style="margin-top: 15px;">View Demo</button>
+                </div>
+                
+                <div class="demo-card">
+                    <i class="fas fa-map-marked-alt" style="font-size: 2.5rem; margin-bottom: 20px;"></i>
+                    <h3>Network Health Heat Map</h3>
+                    <p>Visualize network performance and identify bottlenecks in real-time.</p>
+                    <button class="btn" style="margin-top: 15px;">View Demo</button>
+                </div>
+                
+                <div class="demo-card">
+                    <i class="fas fa-vr-cardboard" style="font-size: 2.5rem; margin-bottom: 20px;"></i>
+                    <h3>AR Network Visualization</h3>
+                    <p>View your network infrastructure through augmented reality.</p>
+                    <button class="btn" style="margin-top: 15px;">View Demo</button>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 40px; font-style: italic; opacity: 0.8;">
+                <p>Note: These are demonstration features showcasing our enterprise capabilities. Full implementation available as premium modules.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2>Contact Us</h2>
+                <p>Get in touch for a consultation or detailed proposal</p>
+            </div>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px;">
+                <div>
+                    <h3>AI-Powered Lead Qualifier</h3>
+                    <p>Our system automatically detects corporate clients, budget potential, and urgency level to prioritize your inquiry.</p>
+                    
+                    <div class="card" style="margin-top: 20px;">
+                        <h4><i class="fas fa-bolt"></i> Quick Response Guaranteed</h4>
+                        <p>Corporate inquiries receive response within 1 hour during business hours.</p>
+                        
+                        <h4 style="margin-top: 20px;"><i class="fas fa-calendar-alt"></i> Meeting Scheduler AI</h4>
+                        <p>Automatically finds optimal meeting times across time zones.</p>
+                        <button class="btn" style="margin-top: 15px;">Schedule Consultation</button>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3>Send Us a Message</h3>
+                    <div class="card">
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" class="form-control" placeholder="Your name">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="company">Company</label>
+                            <input type="text" id="company" class="form-control" placeholder="Your company">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" class="form-control" placeholder="your.email@company.com">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Project Details</label>
+                            <textarea id="message" class="form-control" rows="4" placeholder="Tell us about your IT infrastructure needs..."></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="urgency">Urgency Level</label>
+                            <select id="urgency" class="form-control">
+                                <option value="low">Planning phase (1-3 months)</option>
+                                <option value="medium">Ready to start (within 1 month)</option>
+                                <option value="high">Urgent (need immediate assistance)</option>
+                            </select>
+                        </div>
+                        
+                        <button class="btn btn-accent" style="width: 100%;">Submit Message</button>
+                        
+                        <div style="text-align: center; margin-top: 20px;">
+                            <p><i class="fas fa-microphone"></i> <a href="#" style="color: var(--secondary);">Or use voice input to fill this form</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h2>TechSphere<span>Solutions</span></h2>
+                    <p>Corporate IT & Network Security Specialists</p>
+                    <p style="margin-top: 15px; opacity: 0.8;">Dar es Salaam, Tanzania</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Solutions</h3>
+                    <ul>
+                        <li><a href="#solutions">Network Infrastructure</a></li>
+                        <li><a href="#solutions">Cybersecurity</a></li>
+                        <li><a href="#solutions">CCTV & Access Control</a></li>
+                        <li><a href="#solutions">Smart Office Systems</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Smart Tools</h3>
+                    <ul>
+                        <li><a href="#estimator">Cost Estimator</a></li>
+                        <li><a href="#tools">AI Documentation Wizard</a></li>
+                        <li><a href="#tools">Compliance Checker</a></li>
+                        <li><a href="#tools">Voice Smart Forms</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Contact</h3>
+                    <ul>
+                        <li><a href="tel:+255123456789">+255 123 456 789</a></li>
+                        <li><a href="mailto:info@techsphere.co.tz">info@techsphere.co.tz</a></li>
+                        <li><a href="#contact">Schedule Consultation</a></li>
+                        <li><a href="#contact">Live Chat Support</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 TechSphere Solutions. All rights reserved. | Enterprise IT & Network Security Specialists</p>
+                <p style="margin-top: 10px; font-size: 0.8rem;">Advanced features shown as demonstrations. Full implementation available as enterprise modules.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+            document.getElementById('mobileMenu').classList.toggle('active');
+        });
+        
+        // Close mobile menu when clicking a link
+        const mobileMenuLinks = document.querySelectorAll('.mobile-menu a');
+        mobileMenuLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                document.getElementById('mobileMenu').classList.remove('active');
+            });
+        });
+        
+        // Cost Estimator functionality
+        const employeesSlider = document.getElementById('employees');
+        const employeesValue = document.getElementById('employeesValue');
+        const cctvSlider = document.getElementById('cctv');
+        const cctvValue = document.getElementById('cctvValue');
+        const accessPointsSlider = document.getElementById('accessPoints');
+        const accessPointsValue = document.getElementById('accessPointsValue');
+        const accessControlSlider = document.getElementById('accessControl');
+        const accessControlValue = document.getElementById('accessControlValue');
+        const calculateBtn = document.getElementById('calculateBtn');
+        const estimateResult = document.getElementById('estimateResult');
+        
+        // Update slider values
+        employeesSlider.addEventListener('input', function() {
+            employeesValue.textContent = this.value;
+        });
+        
+        cctvSlider.addEventListener('input', function() {
+            cctvValue.textContent = this.value;
+        });
+        
+        accessPointsSlider.addEventListener('input', function() {
+            accessPointsValue.textContent = this.value;
+        });
+        
+        accessControlSlider.addEventListener('input', function() {
+            accessControlValue.textContent = this.value;
+        });
+        
+        // Calculate estimate
+        calculateBtn.addEventListener('click', function() {
+            const employees = parseInt(employeesSlider.value);
+            const cctv = parseInt(cctvSlider.value);
+            const accessPoints = parseInt(accessPointsSlider.value);
+            const accessControl = parseInt(accessControlSlider.value);
+            const officeSize = document.getElementById('officeSize').value;
+            const securityLevel = document.getElementById('securityLevel').value;
+            
+            // Base calculation (simplified)
+            let baseCost = employees * 300;
+            baseCost += cctv * 450;
+            baseCost += accessPoints * 600;
+            baseCost += accessControl * 1200;
+            
+            // Adjust for office size
+            if (officeSize === 'small') baseCost *= 0.9;
+            else if (officeSize === 'large') baseCost *= 1.2;
+            else if (officeSize === 'xlarge') baseCost *= 1.5;
+            
+            // Adjust for security level
+            if (securityLevel === 'basic') baseCost *= 0.8;
+            else if (securityLevel === 'enterprise') baseCost *= 1.3;
+            else if (securityLevel === 'government') baseCost *= 1.7;
+            
+            // Add minimum and calculate range
+            const minCost = Math.round(baseCost * 0.85);
+            const maxCost = Math.round(baseCost * 1.15);
+            
+            // Format with commas
+            document.getElementById('estimatedPrice').textContent = `$${minCost.toLocaleString()} - $${maxCost.toLocaleString()}`;
+            
+            // Show result
+            estimateResult.style.display = 'block';
+            
+            // Scroll to result
+            estimateResult.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        });
+        
+        // 3D Viewer controls (simulated)
+        document.getElementById('rotateBtn').addEventListener('click', function() {
+            alert('In a real implementation, this would rotate the 3D network model');
+        });
+        
+        document.getElementById('zoomInBtn').addEventListener('click', function() {
+            alert('Zooming in on network components');
+        });
+        
+        document.getElementById('zoomOutBtn').addEventListener('click', function() {
+            alert('Zooming out to view entire network layout');
+        });
+        
+        document.getElementById('resetBtn').addEventListener('click', function() {
+            alert('Resetting 3D view to default position');
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
